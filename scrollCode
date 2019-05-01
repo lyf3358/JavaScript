@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        #gongao {
+            width: 1000px;
+            height: 30px;
+            overflow: hidden;
+            line-height: 30px;
+            font-size: 13px;
+            font-family: '宋体';
+            background: #DDE5ED;
+            color: #0C77CF;
+            font-weight: bold;
+        }
+        #scroll_div{
+            width: 30000px;
+            height: 30px;
+            position: relative;
+        }
+        #gongao #scroll_begin{
+            display: inline-block;
+            padding-left: 1000px;
+            width: 500px;
+   
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload =function(){
+            var speed = 1;
+            var scroll_begin = document.getElementById("scroll_begin");
+            var scroll_div = document.getElementById("scroll_div");
+            var gongao = document.getElementById("gongao");
+            // alert(scroll_div.scrollLeft)
+            // console.time("haha")
+            function Marquee(){
+                if(gongao.scrollLeft - scroll_begin.offsetWidth >=1000 ){
+                    gongao.scrollLeft -= gongao.scrollLeft;
+                    
+                }   
+                else{
+                    gongao.scrollLeft++
+                    // console.log(gongao.scrollLeft)
+                }
+                console.log(gongao.scrollLeft - scroll_begin.offsetWidth)
+            }
+            
+            setInterval(Marquee,speed)
+            // console.timeEnd("haha")
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="gongao">
+        <div id="scroll_div">
+            <div id="scroll_begin">
+                ${affiche.content} ${affiche.content} ${affiche.content} ${affiche.content} ${affiche.content} ${affiche.content}   
+            </div>
+            <!-- <div id="scroll_end"></div> -->
+        </div>
+        <!-- <script type="text/javascript">ScrollImgLeft();</script> -->
+    </div>
+</body>
+</html>
