@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2"); 
+            function drog(obj){ 
+                obj.onmousedown = function(event){
+                    console.log("offsetLeft ="+obj.offsetLeft)
+                    console.log(event.clientX);
+                    var ol = event.clientX - obj.offsetLeft;
+                    var ot = event.clientY - obj.offsetTop;
+                    document.onmousemove = function(event){
+                        var left = event.clientX-ol;
+                        var top = event.clientY-ot;
+                        // console.log(event.clientY);
+                        // console.log("top"+top);
+                        var stp = document.documentElement.scrollTop||document.body.scrollTop;
+                        // console.log("stp"+stp)
+                        // var slt = document.documentElement.scrollLeft||document.body.scrollLeft;
+                        obj.style.left = left + "px";
+                        obj.style.top = top + "px";
+                    }
+                    document.onmouseup = function(){
+                        document.onmousemove = null;    
+                    }
+                    return false; 
+                }  
+            }
+            drog(box1);
+            drog(box2);
+        }   
+    </script>
+    <style>
+        body{
+            width: 5000px;
+            height: 5000px;
+        }
+        #box1{
+            width: 200px;
+            height: 200px;
+            background: yellowgreen;    
+            position: absolute;
+            /* z-index: 99; */
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: absolute;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div><a href="javascript:alert('哈哈')">ahha</a></div>
+    
+</body>
+</html>

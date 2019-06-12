@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            console.log(location)
+            function randomColor() {
+                // 这里使用rgb颜色值
+                var colorVal = "rgb(";
+                for (i = 0; i < 3; i++) {
+
+                    colorVal += Math.round(250 * Math.random());
+                    console.log(colorVal)
+                    if (i < 2) {
+                        colorVal += ",";
+                    }
+                }
+                colorVal += ")";
+                return colorVal;
+            }
+            randomColor()
+            var box1 = document.getElementById("box1");
+            document.onkeydown = function (event) {
+                event = event || window.event;
+                switch (event.keyCode) {
+                    case 37:
+                        box1.style.left = box1.offsetLeft - 10 + "px";
+                        break;
+                    case 38:
+                        box1.style.top = box1.offsetTop - 10 + "px";
+                        break;
+                    case 39:
+                        box1.style.left = box1.offsetLeft + 10 + "px";
+                        break;
+                    case 40:
+                        box1.style.top = box1.offsetTop + 10 + "px";
+                        break;
+                }
+                return false;
+            }
+        }
+    </script>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background: yellowgreen;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

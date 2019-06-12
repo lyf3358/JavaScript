@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单验证</title>
+</head>
+<body>
+    <input type="text">
+    <input type="submit" value="提交">
+    <script>
+        var input = document.getElementsByTagName("input");
+        input[1].onclick = function(){
+            var value = input[0].value;
+            if(value == "" || value==null||value.indexOf(" ")>=0){
+                alert("请输入正确的信息！")
+            }
+        }
+    </script>
+</body>
+</html>
