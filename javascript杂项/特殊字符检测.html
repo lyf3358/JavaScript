@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height:2000px;
+        }
+        #box1{
+            width: 200px;
+            height: 100px;
+            background: yellowgreen;
+            overflow: auto;
+        }
+        #alertBox{
+            width: 200px;
+            height: 200px;
+            background: #f5f5f5;
+            position: absolute;
+            top:-210px;
+            left: 500px;
+            border: 1px solid black;
+            text-align: center;
+            line-height: 200px;
+            transition: all 0.3s ease-in-out;
+
+
+        }
+    </style>  
+</head>
+<body>
+    <script>
+        document.oncontextmenu = function(event){
+            event.returnValue = false;
+        }
+    </script>
+    <a href="" target=""></a>
+    <input onkeyup="value=value.replace(/[^A-z0-9\u4E00-\u9FA5]/g,'')" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')">
+    <div id="box1">
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+            testtesttesttesttesttest
+
+            
+    </div>
+    <input type="checkbox" disabled>我已详细阅读
+    <input type="submit" value="注册" disabled>
+    <div id="alertBox"></div>
+    <script>
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var input = document.getElementsByTagName("input"); 
+        box1.onscroll = function(){
+            if(box1.scrollTop+box1.clientHeight == box1.scrollHeight){
+                input[1].disabled = false;
+            }
+        }
+        input[1].onclick = function(){
+            input[2].disabled = !input[1].checked   
+        }
+        var alertBox = document.getElementById("alertBox");
+        input[2].onclick = function(){
+            setTimeout(function(){alertBox.style= "top:30px";},2000);
+            setTimeout(function(){alertBox.innerHTML = "恭喜您注册成功！"},2200);
+        }
+       
+        
+            
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        window.onload = function () {
+            /*动态时间*/
+            function startTime() {
+                var a = new Date();
+                var h = a.getHours();
+                var m = a.getMinutes();
+                var s = a.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById("clock").innerHTML = h + ":" + m + ":" + s;
+                var t = setTimeout(function () { startTime() }, 1000);
+            }
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+            startTime();
+
+            /*点击显示或隐藏*/
+            var lock = document.getElementById("lock");
+            var clock = document.getElementById("clock");
+            var i = 1;
+            lock.onclick = function () {
+                if (i % 2 == 0) {
+                    clock.style.top = "-100%";
+                    lock.innerHTML = "开启";
+                } else {
+                    clock.style.top = "0";
+                    lock.innerHTML = "隐藏";
+                }
+                console.log(i)
+                i++;
+            }
+            var box = document.getElementById("box");
+            box.onmousedown = function(){
+                // var ol = event.clientX - box.offsetLeft;
+                // var ot = event.clientY - box.offsetTop;
+                // document.onmousemove = function(event){
+                //     var left = event.clientX-ol;
+                //     var top = event.clientY-ot;
+                //     box.style.left = left + "px";
+                //     box.style.top = top + "px";
+                // }
+                // document.onmouseup = function(){
+                //     document.onmousemove = null;    
+                // }
+                // return false; 
+            }
+            
+        }
+    </script>
+    <style>
+        #clock {
+            width: 200px;
+            height: 200px;
+            border-radius: 200px;
+            border: 1px solid black;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 200px;
+            background: #cac8c8;
+            position: relative;
+            top: -100%;
+            transition: 0.5s ease;
+            border-radius: 20px;
+        }
+
+        #box {
+            width: 250px;
+            height: 250px;
+            background: yellowgreen;
+            margin: 0px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 14px rgba(0, 0, 0.3);
+            border-radius: 20px;
+        }
+
+        #lock {
+            position: absolute;
+            bottom: 2px;
+            right: 102px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button id="lock">开启</button>
+        <div id="clock">
+        </div>
+    </div>
+</body>
+
+</html>
