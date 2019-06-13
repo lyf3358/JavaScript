@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 内建对象
+			 * 宿主对象
+			 * 自定义对象
+			 * 
+			 * 【数组(Array)】
+			 * - 数组也是一个对象
+			 * - 它和普通的对象功能类似，也是用来存储一些值的
+			 * 		不同的是普通对象是使用字符窜作为属性名的，而数组使用数字来作为【索引】操作元素
+			 * - 【索引(index)】
+			 * 		从0开始的整数 0,1,2,3,4,5
+			 * - 数组的存储性能比普通的对象要好，所以在开发中我们经常使用数组来存储一些数据
+			 * - 语法：
+			 * 		数组对象[索引] = 值；
+			 * - 【length 属性】
+			 * 	对于连续的数组，使用length可以获取到数组的长度(元素的个数)
+			 * 	对于非连续的数字，使用length会获取到数组的最大索引+1，尽量不要创建非连续数组
+			 * 	length可以检查数组长度，也可以直接更改数组的长度 【对象.length = 数值；】
+			 * 		如果修改的length大于原长度，则多出的部分会空出来
+			 * 		如果修改的length小于原长度，则多出的元素会被删除
+			 * 
+			 * 使用【字面量创建数组】
+			 * var arr = [1,2.3,"哈哈",function,object];
+			 */
+			//第一步创建数组对象
+			function Person(){
+				//alert("haha");
+			}
+			var per = new Person();
+			var arr = new Array();	//第一步创建数组对象		
+			//第二步向数组中添加元素
+			arr[0] = 10 ;
+			arr[1] = 33 ;
+			arr[2] = per;
+			//arr[10] = 31 ;//对于非连续的数字，使用length会获取到数组的最大索引+1
+			arr.length = 10 ;//如果修改的length大于原长度，则多出的部分会空出来
+			arr.length = 1 ;//如果修改的length小于原长度，则多出的元素会被删除
+			arr[arr.length] = 888;//使用此方法可以一直给数组的最大长度添加值
+			arr[arr.length] = 888;
+			arr[arr.length] = 888;
+			arr[arr.length] = 888;
+			console.log(arr);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 使用字面量来创建正则表达式
+			 * 	语法：var 变量 = /正则表达式主体（用于检索）/匹配模式（修饰符）；
+			 * 使用【字面量】的方式来创建更加简单
+			 * 	但是使用【构造函数】创建更加灵活；
+			 *
+			 */
+
+
+			var str = "aRc";
+			var reg = /a/i;	
+			/*
+			 * []方括号用于查找某个范围内的【一个】字符：
+			 * /[ab]/ 查找方括号之间的字符 
+			 * /[^ab]/ 查找任何不在方括号之间的字符。
+			 * /[0-9]/ 查找0-9的数字
+			 * /[a-z]/ 查找a-z的字符
+			 * /[A-Z]/ 查找大写A-大写Z的字符
+			 * /[A-z]/ 查找大写A-小写z的字符
+			 */
+			/*练习*/
+			window.onload=function(){
+				var inp = document.getElementsByName("input");
+				inp.onmouseout=	function(){
+					var reg =/[a-z]|[0-9]/i ;
+					var usern = document.getElementById('userName').value;				
+					var passw = document.getElementById('passWord').value;
+					var user = document.getElementById("user");
+					if(usern == "" || usern == null){
+						user.innerHTML = "输入账号";
+					}	
+				} 
+			}
+
+		</script>
+	</head>
+	<body>	
+		<div>
+			<input id="userName"  placeholder="账号"/><p id="user"></p>
+			<input id="passWord"  placeholder="密码" /><p id="pas"></p>
+			<button onclick="btn1()" type="button" >提交</button>
+		</div>		
+	</body>
+</html>

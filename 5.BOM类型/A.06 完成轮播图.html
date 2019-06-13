@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="reset.css">
+    <script src="tools.js"></script>
+    <title>Document</title>
+    <style>
+        #outer{
+            width: 300px;
+            height: 300px;
+            background: #bfa;
+            margin: 0 auto;
+            padding: 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        img{
+            width: 300px;
+            height: 300px;
+        }
+        #imglist{
+            list-style: none;
+            position: absolute;
+            width: 2000%;
+            
+            
+        }
+        #imglist li{
+            /*父元素需要横向距离足够，下面的子元素才能浮动开*/
+            float: left;
+            margin-right:10px; 
+             
+        }
+        #nav{
+            position: absolute; 
+            bottom: 10px;
+            /*left计算 outer宽度310px nav25*6150 310-150=160  160/2 = 80 */
+        }
+        #nav a{
+            float: left;
+            width: 15px;
+            height:15px;
+            background: rebeccapurple;
+            text-decoration: none;
+            margin-left: 10px;
+            opacity: 0.5;
+            filter: alpha(opacity = 50)/*兼容IE8透明*/;
+            border-radius: 200px;/*变成圆形*/
+        }
+        #nav a:hover{
+            opacity: 1;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var imglist = document.getElementById("imglist");
+            var nav = document.getElementById("nav");
+            var outer = document.getElementById("outer");
+            //设置 nav居中
+            nav.style.left = (outer.offsetWidth - nav.offsetWidth)/2+"px";
+            //设置默认显示图片的索引
+            var index = 0;
+            //获取所有超链接a
+            var allA = document.getElementById("nav").getElementsByTagName("a");
+            //设置默认选中的效果
+            allA[index].style.backgroundColor = "black"
+            //点击超链接切换到指定图片
+            for (var i = 0; i < allA.length; i++) {
+                //为每一个超链接都添加一个num属性
+                allA[i].num = i;
+                //为超链接绑定点击事件
+                allA[i].onclick = function(){
+                    //获取点击的超链接的索引,并将其设置为index
+                    index = this.num;
+                    //切换图片
+                    // imglist.style.left = -310 * index + "px";
+                    //选中a
+                    setA();
+                    //使用move函数来切换图片
+                    move(imglist,"left",-310*index,10000,function(){})
+
+                } 
+
+            }
+            //创建一个方法用来设置选中的a
+            function setA(){
+                //便利所有的A，并将他们的背景颜色设置为红色，将选中的A设置为黑色
+                for (var i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = "";
+                    allA[index].style.backgroundColor = "black";
+                    
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imglist">
+            <li>
+                <img src="img/1.png" alt="">
+            </li>
+            <li>
+                <img src="img/2.png" alt="">
+            </li>
+            <li>
+                <img src="img/3.png" alt="">
+            </li>
+            <li>
+                <img src="img/4.png" alt="">
+            </li>
+            <li>
+                <img src="img/5.png" alt="">
+            </li>
+            <li>
+                <img src="img/6.png" alt="">
+            </li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+
+
+        </div>
+    </div>
+</body>
+</html>

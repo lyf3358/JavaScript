@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: red ;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /*需求1：点击btn1以后修改BOX1的大小*/
+            var box1 = document.getElementById("box1");
+            var btn1 = document.getElementById("btn1");
+            
+            /*
+                通过JS修改元素的样式
+                 语法:元素.style.样式名 = 样式值
+                注意：如果CSS的样式名中含有“-”符号，需要使用驼峰命名法； 
+            */
+            btn1.onclick = function(){
+                box1.style =
+                 "width:100px;height:100px;background-color:yellowgreen";
+            }
+            /*需求2：点击btn2以后读取元素的样式*/
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = function(){
+                //读取box1的样式
+                /*
+                    语法:元素.style.样式名
+                    通过style属性读取和设置都是内联样式
+                */
+               alert(box1.style.backgroundColor)
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <button id="btn1">点一下1</button>
+    <button id="btn2">点一下2</button>
+</body>
+</html>

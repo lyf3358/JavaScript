@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 在调用函数时，浏览器每次都会传递进两个隐含的参数
+			 * - arguments 是一个类数组对象
+			 * 	1.函数的上下文对象 this
+			 * 	2.封装实参的对象arguments
+			 * - arguments 可以用通过索引来操作数据，也可以获取长度
+			 * - 在调用函数时，我们所传递的实参都会在arguments中保存
+			 * - argumnets.length 可以用来获取实参的长度
+			 * 		arguments[0]表示第一个实参
+			 *		arguments[0]表示第二个实参
+			 * - 它里边由一个属性callee
+			 * 		这个属性对应一个函数对象，就是当前正在执行的函数对象
+			 * 
+			 */
+			function fun(a,b){
+				console.log(arguments.callee);
+			}
+			fun("hello",2);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

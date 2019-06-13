@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var all = document.all[0];//代表页面所有元素html head body。。。
+				var all2 =document.getElementsByTagName("*")[0];//document.all
+				var box = document.getElementsByClassName("box");//获取class
+				/*
+				 *【 getElementsByClassName 不兼容IE8浏览器】
+				 * 所以使用 【document.querySelector()】
+				 * 	- 需要一个选择器的字符串作为参数，可以根据一个CSS选择器来查询一个元素节点对象
+				 * 	- 虽然IE8中没有getElementByClassName()但是可以使用querySelector()代替
+				 *  - querySelector() 方法仅仅返回匹配指定选择器的第一个元素。
+				 *     如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
+				 *
+				 * querySelectorAll()
+				 * - 该方法返回文档中匹配指定 CSS选择器的所有元素，返回 NodeList对象。
+				 *   NodeList对象表示节点的数组集合。可以通过索引访问，索引值从 0 开始。
+				 * 
+				 */
+				var divs = document.querySelector(".box div");
+				var box1 = document.querySelector(".box1");
+				var box2 =document.querySelectorAll(".box1");
+				console.log(box2.length);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box1">
+			<div>
+				haha
+			</div>
+			
+		</div>
+		<div class="box1">
+			
+		</div>
+	</body>
+</html>

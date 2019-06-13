@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DIV跟随鼠标移动</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        #box{
+            width: 500px;
+            height: 500px;
+            background: palevioletred;
+        }
+        #box1{
+            width: 50px;
+            height: 50px;
+            background: yellowgreen;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            box1.onmousedown = function(event){
+                event = event || window.event;
+                var ol = event.clientX - box1.offsetLeft;
+                var ot = event.clientY - box1.offsetTop;
+                document.onmousemove = function(event){
+                    //解决兼容问题
+                    event = event || window.event;
+                    /*
+                        chrome认为浏览器的滚动条时body的，可以通过body.scrollTop来获取
+                        火狐等浏览器认为滚动条时html的
+                    */
+                    var left = event.clientX - ol;
+                    var top = event.clientY - ot;
+                    box1.style.left = left + "px";
+                    box1.style.top = top + "px";
+                }
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    return false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- <div id="box"></div> -->
+    <div id="box1"></div>
+</body>
+</html>

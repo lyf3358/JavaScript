@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta harset="UTF-8">
+        <style>
+            body{
+                height: 10000px;
+                width: 10000px;
+                margin: 0;
+            }
+            #box1{
+                width: 100px;
+                height: 100px;
+                background: yellowgreen;
+                position:absolute;
+            }
+            #box2{
+                width: 100px;
+                height: 100px;
+                background:red;
+                position: absolute;
+
+            }
+        </style>
+        <script>
+            window.onload = function(){
+                var box1 = document.getElementById("box1");
+                var box2 = document.getElementById("box2"); 
+                function drag(obj){
+                    obj.onmousedown = function(event){ 
+                        /*
+                            setCapture() ie支持，火狐调用不报错，谷歌会报错
+                            当调用一个元素的setCapture()以后，这个元素将会把下一次的鼠标按下相关的事件捕获到自身上，点其他元素就等于点自身
+                        */
+                        //当鼠标点击时绑定捕获
+                        obj.setCapture && obj.setCapture();//有第一个就不看第二个，第一个没有执行第二个
+                        event = event || window.event;
+                        var ol = event.clientX - obj.offsetLeft;
+                        var ot = event.clientY - obj.offsetTop;       
+                        document.onmousemove = function(event){ 
+                            event = event || window.event;
+                            var x = event.clientX - ol;
+                            var y = event.clientY - ot;
+                            // var t = document.documentElement.scrollTop||document.body.scrollTop;
+                            // var l = document.documentElement.scrollLeft||document.body.scrollLeft;
+                            obj.style.left = x+"px";
+                            obj.style.top = y+"px";
+                        }
+                        document.onmouseup = function(){
+                            document.onmousemove = null;
+                            document.onmouseup = null;
+                            /*
+                                当我们拖拽一个网页中的内容时，浏览器会默认区搜索引擎中搜索内容
+                                此时会导致拖拽功能的一场，这个是浏览器提供的默认行为，
+                                如果不希望发生这个行为，则可以通过return false 来取消默认行为
+                                这个对IE8不起作用
+                            */
+                            //当鼠标松开时取消对事件的捕获
+                            obj.releaseCapture && obj.releaseCapture();
+                        }
+                        return false;
+                    }
+                }
+                drag(box1);
+                drag(box2);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="box1"></div>
+        ppp
+        <div id="box2"></div>
+        
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var obj = new Object();// 普通创建对象			
+			/*
+			 * 【简单创建对象方法】
+			 *  - 使用对象字面量来创建
+			 * 		-使用对象字面量，可以在创建对象时，直接指定对象中的属性
+			 * 		语法：{	属性名：属性值，
+			 * 				属性名：属性值。。。
+			 * 			  }
+			 * 		对象字面量的属性名可以加引号，也可以不加，建议不加。
+			 * 属性名和属性值是一组一组的名值对结构
+			 * 	名和值之间使用:连接多个名值对之间使用，隔开
+			 */
+			var obj = {}; // 使用字面量创建对象
+			obj.name = "孙悟空";
+			
+			var obj2 = {
+				name:"Zhubajie",
+				age:28,
+				gender:"男", // 属性名可以加引号，建议不加	
+				test:{name:"shaheshang"}// 对象的属性也可以是一个对象。
+			}; //类似于CSS和代码块结构，属性分割要使用, 大括号结尾要使用;			
+			console.log(obj2.test);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

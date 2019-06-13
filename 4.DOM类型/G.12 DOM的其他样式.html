@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+    <style>
+        body {
+            margin: 0px;
+            height: 2000px;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            padding: 10px;
+            border: 10px solid yellow;
+            position: relative;
+        }
+
+        #box1 {
+            width: 50px;
+            height: 50px;
+            background: yellowgreen;
+            position: relative;
+            top: 20px;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 300px;
+            background: #bbffaa;
+            overflow: auto;
+        }
+
+        #box3 {
+            width: 200px;
+            height: 1600px;
+            background: yellowgreen;
+        }
+        #info{
+            width: 250px;
+            height: 300px;
+            overflow: auto;
+            background: yellow;
+
+        }
+        p{
+            background: yellow;
+            height: 500px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("btn");
+            var box = document.getElementById("box");
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            btn.onclick = function () {
+                //clientHeight-获取元素的可见高度,返回的值不带PX,包括内容区和paidding,不包括border的值
+                console.log("clientHeight" + "=" + box.clientHeight);
+                //clientWidth-获取元素的可见宽度,返回的值不带PX,包括内容区和paidding,不包括border的值
+                console.log("clientWidth" + "=" + box.clientWidth);
+
+                //offsetWidth-获取元素的整个宽度，包括内容区，内边距和边框
+                console.log("offsetWidth" + "=" + box.offsetWidth);
+                //offsetHeight-获取元素的整个高度，包括内容区，内边距和边框
+                console.log("offsetHeight" + "=" + box.offsetHeight);
+
+                //offsetParent-会获取到距离最近开启了定位的祖先元素
+                console.log("offsetParent" + "=" + box1.offsetParent.id)
+                //offsetLeft-当前元素相对于其定位父元素的水平偏移量(往左偏移了多少)
+                console.log("offsetLeft" + "=" + box1.offsetLeft);
+                //offsetTop-当前元素相对于其定位父元素的垂直偏移量(往下偏移了多少)
+                console.log("offsetTop" + "=" + box1.offsetTop);
+
+                //scrollHeight - 获取到当前滚动区域的高度
+                console.log("scrollHeight" + "=" + box2.scrollHeight);
+                //scrollWidth - 获取当前滚动区域的宽度   
+                console.log("scrollWidth" + "=" + box2.scrollWidth);
+                //scrollLeft - 获取水平滚动条滚动的距离
+                console.log("scrollLeft" + "=" + box2.scrollLeft);
+                //scrollTOP - 获取垂直滚动条滚动的距离
+                console.log("scrollTop" + "=" + box2.scrollTop);
+
+                alert(box2.clientHeight);  
+                //scrollHeight-scrollTop == clientHeight 说明垂直滚动到底了
+                //scrollwidth-scrollLeft == clientWidth  说明水平滚动到底了
+                //alert(box2.scrollHeight - box2.scrollTop);
+                //alert(box2.scrollWidth - box2.scrollLeft);
+
+            }
+            //onscroll - 滚动条滚动时触发
+            var info = document.getElementById("info");
+            var inputs = document.getElementsByTagName("input")
+            info.onscroll = function(){
+                if(this.scrollHeight - this.scrollTop == this.clientHeight){
+                    inputs[0].disabled = false; 
+                }
+            }
+            inputs[0].onclick  = function(){
+                inputs[1].disabled = !inputs[0].checked
+                alert(inputs[0].checked)
+                // if(inputs[0].checked){
+                //     inputs[1].disabled = false;
+                // }else{
+                //     inputs[1].disabled = true;
+                // }
+
+            }
+ 
+                     
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="box" style="width: 100px;height: 100px">
+        <div id="box1">
+        </div>
+    </div>
+    <div id="box2"><div id="box3"></div></div>
+    <button id="btn">按钮</button>
+    <div id="info">
+        <p>
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+            请仔细阅读用户协议，请仔细阅读用户协议。
+
+        </p>
+    </div>
+    <input type="checkbox" disabled ><span>我已详细阅读协议</span>
+    <input type="submit" value="注册" disabled >
+</body>
+
+</html>

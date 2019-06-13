@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var a = document.getElementsByTagName("a");
+            for (var i = 0; i < a.length; i++) {
+                /*
+                    a.length = 4
+                    i[0]<a.length i++ = i[1] 
+                    i[1]<a.length i++ = i[2]
+                    i[2]<a.length i++ = i[3]
+                    i[3] = a.length 取消自增,不执行此索引代码
+                    console.log(i);
+                */
+                /*
+                    for循环会在页面加载完成之后立即执行
+                    而响应函数会在超连接被点击时才执行
+                */
+                a[i].onclick = function(){
+                    
+                }
+            }
+                
+        }
+    </script>
+</head>
+<body>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+</body>
+</html>

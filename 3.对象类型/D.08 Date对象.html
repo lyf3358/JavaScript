@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 【Date对象】
+			 * 	- 在js中使用Date对象来表示一个时间
+			 *  - getDate()-从 Date 对象返回一个月中的某一天 (1 ~ 31)
+			 * 	- getDay()-从 Date 对象返回一周中的星期几 (0 ~ 6)
+			 * 	- getMonth()-从 Date 对象返回月份 (0 ~ 11)0表示1月
+			 * 	- getFullYear()-从 Date 对象以四位数字返回年份
+			 * 	- getTime()-获取当前日期对象的【时间戳】，格林威治标准时间1970 年 1 月 1 日至今的毫秒数
+			 * 		计算机底层在保存时间时使用的都是时间戳
+			 */
+			//创建一个Date对象
+			var d = new Date();
+			//如果直接使用构造函数创建一个Date对象，则会封装成当前代码执行的时间			
+			//创建一个指定的时间对象
+			//需要在构造函数中传递一个表示时间的字符串作为参数
+			var d2 = new Date("2019/2/7 22:22:00");
+			var Date2 = d.getDate();
+			var Day = d.getDay();
+			var Month = d.getMonth()+1;
+			var Year = d.getFullYear();
+			var Time = d.getTime()/1000/60/60/24/365;
+			//利用时间戳来测试代码的执行的性能
+			//获取当前的时间戳
+			var Time2 = Date.now();			
+			for(var i = 0; i<100;i++){
+				console.log(i);
+			}
+			var Time3 = Date.now();
+			console.log("时间="+(Time3-Time2)+"毫秒");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

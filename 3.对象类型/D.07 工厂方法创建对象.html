@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 使用【工厂方法】创建对象
+			 * 	通过该方法可以大批量的创建对象
+			 */
+			function createPerson(name,age,gender){
+				//首先创建一个新的对象
+				var obj = {
+				//向对象中添加属性
+				name:name,
+				age:age,
+				gender:gender,
+				say:function(){
+					alert(this.name);
+				}
+			}
+				//然后将新的对象返回
+				return obj;
+			}
+			var obj2 = createPerson("孙武",23,"男");//赋值
+			console.log(obj2);
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

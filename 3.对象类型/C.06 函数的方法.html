@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * call()和apply()
+			 * 	- 这两个方法都是函数对象的方法，需要通过函数对象来第哦啊用
+			 * 	- 对象.call() || 对象.apply()
+			 * 	- 在调用call()和apply()方法时，可以将一个对象指定为第一个参数
+			 * 		此时这个对象将会称为函数执行时的this
+			 * 	- call()方法可以将实参在对象之后一次传递
+			 * 	- apply()方法需要将实参封装到一个数组中统一传递
+			 * - this的情况
+			 * 		1.以函数形式调用时，this永远都是window
+			 * 		2.以方法的形式调用时，this是调用的方法的对象
+			 * 		3.以构造函数的形式调用时，this是新创建的构造函数
+			 * 		4.使用call()和apply()方法调用时，this是方法指定的那个对象
+			 */
+			var obj ={
+				name:"猪八戒"
+				};
+			var obj2 = {
+				name:"孙悟空"
+				};
+			function fun(a,b){
+				console.log(a);
+				console.log(b);
+				//alert(this.name);
+			}
+			fun.call(obj2,2,3);//- call()方法可以将实参在对象之后一次传递
+			fun.apply(obj,[2,4]);//- apply()方法需要将实参[封装]到一个数组中统一传递
+			//fun.apply();
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

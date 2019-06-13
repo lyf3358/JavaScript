@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件的传播</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            background: yellowgreen;
+        }
+        #box2{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var box3 = document.getElementById("box3");
+            //为三个box绑定单击响应函数
+            /*
+                事件的传播
+                    - 关于事件的传播，网景公司域微软公司有不同的理解
+                冒泡阶段  - 微软认为事件应该由内向外传播，当前元素香祖先元素传递，事件应在冒泡阶段执行
+                捕获阶段  - 网景认为事件应该由外向内传播，最外层祖先元素往当前元素传递
+                最终由W3C决定：
+                - 综合了两个公司的方案，将事件的传播分为了三个阶段
+                    1.捕获阶段- 从最外层的祖先元素，向目标元素进行事件的捕获，但是默认此时不触发事件
+                    2.目标阶段- 事件捕获到目标元素，捕获结束后开始在目标捕获是时触发事件
+                    3.冒泡阶段- 事件从目标元素向祖先元素传递，一次触发祖先元素上相同的事件
+                - 如果希望在捕获阶段就触发事件，可以将addEventListener()的第三个参数设置为true   
+                    一般情况不会再捕获阶段触发事件，所以一般都使用false
+            */
+            function bind(obj,eventStr,callback){
+                if(obj.addEventListener){
+                    obj.addEventListener(eventStr,callback,false)
+                }else{
+                    obj.attchEvent("on"+eventStr,function(){
+                        callback.cal(obj);
+                    });
+                }
+            }
+            bind(box1,"click",function(){alert("1")})
+            bind(box2,"click",function(){alert("2")})
+            bind(box3,"click",function(){alert("3")})
+        }
+    </script>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+</body>
+</html>

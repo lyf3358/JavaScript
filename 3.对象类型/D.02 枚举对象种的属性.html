@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">				
+			/*
+			 * 【枚举对象中的属性】
+			 * 语法：
+			 *  for(var 变量 in 对象){
+			 * 	
+			 * 	}
+			 * for...in 语句 对象中有几个属性，循环体就会执行几次
+			 * 	每次执行时，会将对象中的一个属性的名字赋值给变量
+			 */
+			var obj = {
+				name:"sunwuk",
+				age:18,
+				gender:"nan",
+				address:"huaguoshan"
+			};	
+
+			for (var x in obj) {
+				//console.log(x); 将x保存的是obj对象中的属性
+				console.log(obj[x]); //打印出obj中的属性值
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 【基本数据类型】
+			 * 		string number boolean null undefined
+			 * 【引用数据类型】
+			 * 		object
+			 * 
+			 * 【JS中的变量都是保存到栈内存中的】
+			 * 	【基本数据类型的值】，直接在栈内存中存储
+			 * 	值与值之间是独立存在的，修改一个变量不会影响其他的变量
+			 * 
+			 * 	【引用数据类型：对象是保存到堆内存中的】，每创建一个新的对象，就会在对内存中开辟出一个新的空间
+			 * 	【对象中的变量保存的是对象的内存地址】（对象的引用），如果两个变量保存的是同一个对象引用，
+			 * 	当一个变量通过另一个变量修改属性时，另一个也会收到影响。
+			 * 	当其中一个变量直接修改自身的值时，另一个变量不会发生变化，等于切断了其中一个变量的“引用线”
+			 */
+			var a = 123;//a = 124
+			var b = a; // b = 123 【基本数据类型】 修改属性值后 
+			a++
+			//console.log("b = "+b);
+			
+			var obj = new Object();
+			obj.name = "孙悟空";
+			var obj2 = obj;
+			
+			obj.name = "猪八戒"; //修改obj的name属性值
+			//console.log(obj.name);
+			//console.log(obj2.name);
+			
+			obj2 = null;//当其中一个变量直接修改自身的值时，另一个变量不会发生变化，
+						//等于切断了其中一个变量的“引用线”
+			//console.log(obj);
+			//console.log(obj2);
+			var c = 10 ;
+			var d = 10 ;
+			//console.log(c==d);
+			
+			var obj3 = new Object();
+			var obj4 = new Object();
+			obj3.name = "沙和尚";
+			obj4.name = "沙和尚";
+			console.log(obj3);
+			console.log(obj4);
+			console.log(obj3 == obj4);//false 属于两个对象
+			/*
+			 * 当比较两个基本数据类型的值时，就是比较值
+			 * 而比较两个引用数据类型时，它是比较的对象的内存地址
+			 * 		如果两个对象是一模一样的，但是地址不同，它也会返回false
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				//input 的【 checked】属性 表示选中状态
+				//1.#selectAll【全选】
+				//获取iput的name属性
+				var items = document.getElementsByName("items");
+				//为id为selecAll的按钮绑定一个单击响应函数				
+				var selectAll = document.getElementById("selectAll");
+				selectAll.onclick = function(){
+					//设置4个多选框变成选中					
+					//遍历 items数组
+					for (var i = 0; i < items.length; i++) {
+						//设置四个多选框变成选中状态
+						//通过多选框的checked属性可以来获取或设置多选框的选中状态			
+						//alert(items[i].checked);//获取
+						items[i].checked = true;//设置
+					}
+					checkedAllBox.checked = true;
+				}				
+				//2.#unselectAll【全不选】
+				//为id为unselecAll的按钮绑定一个单击响应函数
+				var unselectAll = document.getElementById("unselectAll");
+				unselectAll.onclick = function(){
+					//设置4个多选框变成不选中
+					for (var i = 0; i < items.length; i++) {
+						//设置四个多选框变成不选中状态
+						//通过多选框的checked属性可以来获取或设置多选框的选中状态			
+						//alert(items[i].checked);//获取
+						items[i].checked = false;//设置
+					}
+					checkedAllBox.checked = false;
+				}
+				//3.#inverseSelection【反选】
+				var inverseSelection = document.getElementById("inverseSelection");
+				inverseSelection.onclick = function(){
+					//将checkedAllBox设为默认为true
+						checkedAllBox.checked = true;
+					for (var i = 0; i < items.length; i++) {
+						//判断多选框的选中状态
+						items[i].checked = !items[i].checked;						
+							//判断四个多选框是否全选
+							//只要有一个没选中则就不时全选
+							if(!items[i].checked){
+								//一旦进入判断，则证明不时全选
+								//将checkedAllBox设为没选中状态
+								checkedAllBox.checked = false;
+								
+							}
+						}
+					}
+								
+				//4.#submitBtn【提交】
+				var submitBtn = document.getElementById("submitBtn");
+				submitBtn.onclick = function(){
+					for (var i = 0; i < items.length; i++) {
+						if(items[i].checked){
+							alert(items[i].value);
+						}
+					}
+				}
+				//5.checkedAllBox
+				/*
+				 * 全选*全部选 多徐娜狂
+				 * 	-	 当它选中时，其余的也选中，当它取消时其余也取消
+				 * 
+				 * 在事件的响应函数中，响应函数给谁绑定，this就时谁
+				 */
+				var checkedAllBox = document.getElementById("checkedAllBox");
+				checkedAllBox.onclick = function(){
+					
+					for (var i = 0; i < items.length; i++) {
+						items[i].checked =this.checked;					
+					}					
+				}
+				//6.items
+				/*
+				 * 如果四个多选框全都选中，则checkedAllBox也应该选中
+				 * 如果四个多选框全都没选中，则checkedAllBox也应该没选中
+				 */
+				//为资格多选框分别绑定单击响应函数
+				for (var i = 0; i < items.length; i++) {
+					items[i].onclick = function(){						
+						//将checkedAllBox设为默认为true
+						checkedAllBox.checked = true;
+						for (var j = 0; j < items.length; j++) {
+							//判断四个多选框是否全选
+							//只要有一个没选中则就不时全选
+							if(!items[j].checked){
+								//一旦进入判断，则证明不时全选
+								//将checkedAllBox设为没选中状态
+								checkedAllBox.checked = false;
+								break;
+							}
+						}
+					}
+					
+				}
+			
+			
+			}
+
+		</script>
+	</head>
+	
+	<body>
+		<span>你的爱好是?</span>
+		<input type="checkbox" id="checkedAllBox"/>全选/全部选<br />
+		<input type="checkbox" name="items" value="足球" />足球
+		<input type="checkbox" name="items" value="篮球" />篮球
+		<input type="checkbox" name="items" value="羽毛球" />羽毛球
+		<input type="checkbox" name="items" value="乒乓球" />乒乓球<br />
+		<button id="selectAll" type="button">全选</button>
+		<button id="unselectAll" type="button">全不选</button>
+		<button id="inverseSelection" type="button">反选</button>
+		<button id="submitBtn" type="button">提交</button>
+	</body>
+</html>

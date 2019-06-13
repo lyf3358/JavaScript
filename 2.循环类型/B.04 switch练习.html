@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 对于成绩大于60分的，输出合格，低于60分的输出不合格
+			 * - 方法1 将分数/10 利用parsenint()函数取整，然后分段求值判断
+			 * 6x / 10 = 6
+			 * 7x / 10 = 7
+			 * 8x / 10 = 8
+			 * 9x / 10 = 9
+			 * 10x / 10 = 10
+			 * - 方法2 将switch条件设为true，然后用case做条件判断 与true进行比较
+			 * 	var a = 61;
+			 * 		switch(true){	
+			 * 			case a>60 : console.log("成立")
+			 * 				break;
+			 * }
+			 */
+			//【方法1】
+			/*var score = 50;
+			switch(parseInt(score/10)){
+				case 10:
+					console.log("合格");
+					break;
+				case 9:
+					console.log("合格");
+					break;
+				case 8:
+					console.log("合格");
+					break;
+				case 7:
+					console.log("合格");
+					break;
+				case 6:
+					console.log("合格");	
+					break;
+				default:
+					console.log("不合格");					
+			}*/
+			//方法2 swicth(true) case 做条件判断
+			var score = 70;
+			switch (true){
+				case score>60:
+					console.log("合格");
+					break;
+				default:
+					console.log("不合格")
+					break;
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">			
+		</script>
+	</head>
+		<!--
+			【DOM事件】
+			- 我们可以在事件对应得属性中设置一些JS代码，当事件被触发时，这些代码会执行
+			
+        -->
+		<button id="btn" style="width: 50px;height: 50px;">按钮</button>
+		<script>
+			var btn = document.getElementById("btn");
+			btn.onclick = function(){
+				alert("点击某个对象时调用");
+			}
+			/*btn.onmousemove = function(){
+				alert("鼠标在某个节点区域移动");
+			}
+			btn.onmousedown = function(){
+				alert("鼠标在某个节点区域按下");
+			}
+			btn.onmouseover = function(){
+				alert("移动到某元素上");
+			}
+			btn.onmouseout = function(){
+				alert("从某元素上离开");
+			}
+			btn.onmouseout = function(){
+				alert("从某元素上离开");
+			}
+			window.onkeydown = function(){
+				alert("键盘按键被按下");
+			}*/
+			window.onkeyup = function(){
+				alert("键盘按键被松开");
+			}
+		</script>
+	<body>
+	</body>
+</html>

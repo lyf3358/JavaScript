@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * break关键字可以用来推出switch或其他循环语句
+			 * 	不能再if语句中使用 break和continue
+			 * 	使用break关键字，会立即终止离他最近的哪个循环语句
+			 */
+			/*for(i=0; i<5; i++){
+			
+				if (i=4) {
+					continue;
+				}
+				
+			}console.log(i);*/
+			/*outerloop:
+			for (var i=0; i<5; i++) {
+				console.log("@外层循环");
+				for (var j=0;j<5;j++) {
+					console.log("@内层循环");
+					if (i==3) {
+						break outerloop;
+					}				
+				}
+			}*/
+			/*
+			 * 可以为循环语句创建一个label标签，来标识当前的循环
+			 * label：循环语句
+			 * 使用break语句时，可以再break后跟着一个label，
+			 *	这样break将会结束指定的循环，而不是最近的
+			 */
+			hello:
+			/*for (var i=0; i<5; i++) {
+				console.log("@外层循环");
+				for (var j=0;j<5;j++) {
+					break hello;
+					console.log("@内层循环");
+				}
+			}*/
+			
+			//continue关键字可以跳过当次循环，对离他最近的循环起作用
+			/*for (var i=0;i<5; i++) {
+				if (i==2) {
+					continue;
+				}
+				console.log(i);	
+			}*/
+			for (var i =0;i<5;i++) {		
+				for (var j=0;j<5;j++) {
+					if (j==1) {
+						continue;
+					}
+					console.log(">>>"+j);
+				}			
+			}
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

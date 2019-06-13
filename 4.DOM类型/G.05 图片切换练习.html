@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#outer{
+				width: 300px;
+				margin: 100px auto;
+				text-align: center;
+				background: #69AAEC;				
+			}
+			img{
+				width: 300px;	
+				height:200px;
+				animation: myfirst 3s;
+				
+			}
+			@keyframes myfirst{
+				from{opacity: 0;}
+				to{opacity: 1;}
+			}
+			.btn{
+				text-align: center;
+			}
+
+		</style>
+	</head>
+		<div id="outer">
+			<p id="info"></p>
+			<img  src="img/1.jpg" alt="飞鸟" />
+			<div class="btn">
+				<button id="prev">上一张</button>
+				<button id="next">下一张</button>
+			</div>
+		</div>
+		<script type="text/javascript">		
+			//获取到对象
+			var info = document.getElementById("info");
+			var img = document.getElementsByTagName("img")[0];
+			var prev = document.getElementById("prev");
+			var next = document.getElementById("next");
+			//创建一个数组保存图片地址
+			var pic = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"]
+			console.log(pic[5]);
+			var index = 0 ;//创建一个变量用来保存索引的位置
+			info.innerHTML = "第1张";
+			prev.onclick = function(){
+				//如果点击上一张 索引就自减
+				index --
+				if(index<0){
+					index = pic.length-1;
+				}
+				img.src = pic[index];//图片数组的索引为index 所以 -- 就是向前一张
+				info.innerHTML = "第"+(index+1)+"张";				
+			}
+			next.onclick = function(){		
+				index ++
+				if(index>pic.length-1){
+					index=0;
+				}
+				img.src = pic[index];
+				info.innerHTML = "第"+(index+1)+"张";
+			}
+		</script>
+	<body>
+	</body>
+</html>

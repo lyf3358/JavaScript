@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            //创建一个数组保存图片的路径
+            var imgArr = ["img/1.png","img/2.png","img/3.png"]
+            //创建一个变量来保存当前图片的索引
+            var index = 0;
+            /*
+                开启一个定时器，来自动切换图片
+            */
+           var startLoop;//此变量只有再下面的点击事件发生时才会绑定定时器事件，否则他会是一个undefined
+            btn01.onclick = function(){
+                //目前，每点击一次就会开启一个定时器。点击多次就会开启多个定时器，这就导致图片的切换速度过快，并且我们只能关闭最后一次开启的定时器
+                //在开启定时器之前，需要将当前元素的上一个定时器关闭
+                clearInterval(startLoop)
+                startLoop = setInterval(function(){
+                    //使索引来自增
+                    index++;
+                    //index % 数组的最大索引也可也实现索引循环
+                    index = index % imgArr.length 
+                    //    if(index>imgArr.length-1){
+                    //         index = 0;
+                    //    }
+                    //修改img1的src属性
+                    img1.src = imgArr[index];  
+                },1000);
+                //点击btn02停止循环，清除定时器的变量名需要再同一个作用域中才能访问，所以可以将btn02的事件函数放到btn01中
+                // btn02.onclick = function(){
+                //     clearInterval(startLoop);
+                // }
+            }
+            //也可以将定时器的变量放到全局作用域中，这样btn02也可以单独访问变量startLoop
+            btn02.onclick = function(){
+                    clearInterval(startLoop);
+            }
+            //clearInterval()可以接受任意参数，如果参数是一个有效的定时器的标识，则停止对应的定时器，否则什么也不做，所以先点清除也没问题
+            
+        }
+
+    </script>
+</head>
+<body>
+    <img src="img/1.png" id="img1">
+    <button id="btn01">开始切换</button>
+    <button id="btn02">停止切换</button>
+</body>
+</html>

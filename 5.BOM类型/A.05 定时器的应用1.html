@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var btn01 = document.getElementById("btn01");
+            var btn02 = document.getElementById("btn02");
+            var btn03 = document.getElementById("btn03");
+            var btn04 = document.getElementById("btn04");
+            var box1 = document.getElementById("box1");
+            /*
+                创建一个可以执行动画的函数
+                参数
+                    obj2   - 要执行动画的对象
+                    attr   - 要执行动画的样式
+                    target - 目标位置
+                    speed  - 移动的速度 正数向右移动，负数向左移动
+                    callback()
+            */
+            function move(obj2,attr,target,speed,callback) {
+                //关闭上一个定时器,给每一个按钮绑定一个定时器属性
+                clearInterval(obj2.start)
+                //获取元素的目前位置
+                var current = parseInt(getStyle(obj2,attr));
+                //判断速度的正负值
+                //如果从0向800移动，则speed为正值，如果从800向0移动，speed为负值
+                if(current>target){
+                    //此时速度应为负值
+                    speed = -speed;
+                }
+                //开启一个定时器，用来执行动画效果
+                obj2.start = setInterval(function () {
+                    var oldValue = parseInt(getStyle(obj2, attr));
+                    //创建个新值，在旧值的基础上增加
+                    var newValue = oldValue + speed;
+                    //判断newValue是否大于800
+                    //当向左移动时，需要判断newValue是否小于target
+                    //向右移动时，需要判断newValue是否大于target
+                    if (speed < 0 && newValue < target || speed > 0 && newValue > target) {
+                        newValue = target;
+                    }
+                        //将新值设置给box1
+                    obj2.style[attr] = newValue + "px";
+                    //判断newValue是否等于800，如果等于就结束定时器
+                    if(newValue == target){
+                        clearInterval(obj2.start);
+                        //第一个定时器结束后执行下一个定时器
+                        callback && callback()
+                    }
+                }, 50)
+            }
+                    move(box1,"width",800,100,function(){
+                        move(box1,"height",800,100,function(){
+                            move(box1,"width",100,100,function(){
+                                move(box1,"height",100,100,function(){
+                                })
+                            })
+                        })
+                    })
+                    
+                    
+                    
+
+
+
+            function getStyle(obj, name) {
+                // if(window.getComputedStyle){
+                //     //如果是判断getComouted他会去每一层作用域找，但是他是没有的变量所以会报错，
+                //     //使用window.会作用window的属性，就不报错
+                //     return getComputedStyle(obj,null)[name];
+                // }else{
+                //     return obj.currentSryle[name];
+                // }
+                return window.getComputedStyle ? getComputedStyle(obj, null)[name] : obj.correntStyle[name];
+            }
+        }
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background: yellowgreen;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 800px;
+            height: 800px;
+            border-right: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box2">
+        <button id="btn01">向右移动</button>
+        <button id="btn02">向左移动</button>
+        <button id="btn03">向下移动</button>
+        <button id="btn04">向上移动</button>
+
+        <div id="box1"></div>
+    </div>
+
+</body>
+
+</html>

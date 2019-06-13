@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            height: 2000px;
+        }
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <script>
+        window.onload = function () {
+            /*
+                当鼠标滚轮向下滚动时，box1边长
+                当滚轮向上滚动时，box1变短
+                滚轮事件 onwheel()
+            */
+            var box1 = document.getElementById("box1");
+            box1.onwheel = function (event) {
+                event = event || window.event;
+                //判断滚轮向上滚还是向下滚
+                //event.wheeldelta 可以获取鼠标滚轮滚动的方向
+                //向上滚是正值，向下滚是负值 chrome里 向上是120 向下滚是-120
+
+                //wheelDelta火狐里不支持
+                //在火狐中使用event.deltaY来判断向上或向下
+                if (event.wheelDelta > 0 || event.deltaY < 0) {
+                    box1.style.height = box1.clientHeight - 100 + "px";
+                } else {
+                    box1.style.height = box1.clientHeight + 100 + "px";
+                }
+                //当滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动
+                //这是浏览器的默认行为，chrome可以使用return false取消默认行为
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

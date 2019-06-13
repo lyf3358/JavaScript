@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 500px;
+				height: 200px;
+				background-color: yellow;
+				border: 1px solid black;
+				box-sizing: border-box;
+				overflow: hidden;
+			}
+			input{
+				width:20%;
+				display: block;
+			}
+		</style>
+		<script type="text/javascript">
+			/*function myFuntion(){
+				var h,m;
+				
+				h = document.getElementById('height').value;
+				m = document.getElementById('money').value;	
+				if(h===null){
+					alert("请输入信息");
+				}else if(isNaN(h)){
+					alert("请输入身高数字");				
+				}else if(isNaN(m)){
+					alert("请输入工资数");
+				}else if(h>=180 && m>=1000){
+					alert("非你不嫁")					
+				}else if(h>=170 && m>=1000){
+					alert("还可以");
+				}else if(h>=170 && m>=500 ){
+					alert("比上不足比下有余");					
+				}
+			}*/
+		/*	var num1 = +prompt("第一个");
+			var num2 = +prompt("第二个");
+			var num3 = +prompt("第三个");		
+			if(num1 < num2 && num1< num3){				
+				if(num2 < num3){	
+					alert('num1<num2<num3');
+				}else{
+					alert('num1< num3<num2');
+				}
+			}else if(num2<num1 && num2<num3){
+				if(num1<num3){
+					alert(num2+"<"+num1+"<"+num3);
+				}else{
+					alert(num2+"<"+num3+"<"+num1);
+				}
+			}else{
+				if(num1<num2){
+					alert(num3+"<"+num1+"<"+num2);
+				}else{
+					alert(num3+"<"+num2+"<"+num1);
+				}
+			}*/
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			身高：<input id="height"  placeholder="输入身高（CM）"/>	
+			工资：<input id="money"  placeholder="输入月工资（万）"/>			
+			<button onclick="myFuntion()">提交</button><br /><br />
+			<p id="test"></p>
+			
+		</div>
+	</body>
+</html>

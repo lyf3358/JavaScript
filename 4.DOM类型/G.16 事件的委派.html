@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件的委派</title>
+    <style>
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn01">添加超链接</button>
+    <ul id="ul">
+        <li><a href="javascript:void(0)" class="link">超链接1</a></li>
+        <li><a href="javascript:void(0)">超链接2</a></li>
+        <li><a href="javascript:void(0)">超链接3</a></li>
+    </ul>
+    <script>
+        var btn01 = document.getElementById("btn01");
+        var ul = document.getElementsByTagName("ul")[0]
+        //获取li元素
+        var allLi = document.getElementsByTagName("li");
+        btn01.onclick = function(){
+            //点击按钮添加新的超链接
+            //创建新的li元素
+            var li = document.createElement("li");
+            //获取所有的li标签，
+            
+            //为li标签添加内容
+            //li元素的最大长度+1就可以获取到li的数量顺序排下去
+            li.innerHTML = "<a href='javascript:void(0)'>新超链接"+(allLi.length+1)+"</a>"
+            //将li元素添加到ul中
+            ul.appendChild(li);
+        }
+        /*
+            为每一个超链接都绑定一个单击响应函数
+            这里我们为每一个超链接都绑定了一个单击响应函数，这种操作比较麻烦
+            而且这些操作只能为我们已有的超链接设置事件，而新添加的超链接必须重新绑定
+        */ 
+        var allA = document.getElementsByTagName("a");
+        // for(var i = 0; i<allA.length; i++){
+        //     allA[i].onclick = function(){
+        //         alert("hh")
+        //     }
+        // }
+        /*
+            我们希望只绑定一次事件，即可应用到多个元素上，即使元素是后添加的
+            我们可以尝试将其绑定给元素的共同的祖先元素,叫做【事件的委派】
+
+            【事件的委派】
+                -将事件统一绑定给元素的共同的祖先元素，这样后代元素上的事件触发时，会一直冒泡到祖先元素
+                    从而通过祖先元素的响应函数来处理事件
+                -事件委派都是利用了冒泡，通过委派可以减少事件的 绑定次数，提高程序的性能   
+        */
+        //为ul绑定单击响应函数
+        ul.onclick = function(event){
+            //点谁 event.target 就是谁 
+            //如果触发事件的对象时我们期望的元素，则执行否则不执行
+            if(event.target.className == "link"){
+                alert("haha")
+            }
+        }
+    </script>
+</body>
+</html>

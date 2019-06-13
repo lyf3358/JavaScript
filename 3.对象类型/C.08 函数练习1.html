@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 定义一个函数，判断一个数字是否是偶数，如果是返回true，否则返回false
+			 */
+			function isEven(num){				
+				return num % 2 == 0 ; //返回比较结果			
+			}
+			var result = isEven(4);
+			//console.log(result);
+			
+			/*
+			 * 定义一个函数，可以根据半径计算一个圈的面积，并返回计算结果。
+			 * 圆的面积计算公式：3.14(圆周率)*r(半径)*r(半径)
+			 */
+			function area(r){
+				return 3.14*r*r; //3.14(圆周率)是固定值,所以r为一个变量,可以当作形参。
+			}
+			//var result = area(20);
+			//console.log(result);
+			
+			/*
+			 * 创建一个函数，在控制台中输出一个人的信息
+			 * 	输出: name age gender address
+			 * 		实参可以是任意数据类型
+			 * 参数过多时，可以把实参的值封装到一个【对象】中，通过对象进行调用
+			 */
+			function information(o){
+				//console.log("我是"+o.name+",今年我"+o.age+"岁了"+",我是一个"+o.gender+",我住在"+o.address)
+			}
+			//information("Li",28,"男人","beijing"); 这样传比较麻烦		
+			//参数过多时，可以把实参的值封装到一个【对象】中，通过对象进行调用。
+			var obj = {
+				name:"sunwuk",
+				age:18,
+				gender:"male",
+				address:"huaguoshan"
+			};
+			information(obj);
+			
+			/*
+			 * 实参可以是一个【对象】，也可以是一个【函数】
+			 */
+			function fun(a){
+				console.log("a="+a);
+				//a(obj);
+			}
+			//fun(information);
+			//fun(function(){alert("hello")});
+			
+			/*
+			 * area()
+			 * 	- 调用函数
+			 * area
+			 * 	- 函数对象
+			 */
+			fun(area(20));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

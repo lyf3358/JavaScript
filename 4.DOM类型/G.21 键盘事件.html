@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background: yellowgreen;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //键盘事件一般都会绑定给一些可以获取到焦点的对象 
+
+            // onkeydown - 按键被按下，不松手会一直触发，第一次和第二次有间隔时间，往后的都会非常快，为了防止误操作            
+            document.onkeydown = function (event) {
+                event = event || window.event;
+                //通过keycode获取按键的编码
+                //判断Y键和ctrl是否被同时按下
+                /*
+                  除了keyCode，时间对象中还提供了几个键盘属性
+                    altKey
+                    ctrlKey
+                    shiftKey
+                        - 这三个用来判断alt CTRL shift 是否被按下
+                */
+                if (event.keyCode === 67 && event.ctrlKey) {
+                    alert("all")
+                }
+            }
+            //onkeyup - 按键被松开
+            var inp = document.getElementById("inp");
+            inp.onkeydown = function (event) {
+                event = event || window.event;
+                console.log(event.keyCode)
+                //在文本框输入内容，属于onkeydown的默认行为
+                //如果取消了默认行为。之后就无法再输入任何内容
+                //可以使用默认行为，限制某些内容的输入
+                //判断按键编码是否为数字，如果是数字就取消内容输入的默认行为，如果不是就可以正常输入
+                if (event.keyCode >= 96 && event.keyCode <= 105 || event.keyCode >= 48 && event.keyCode <= 57) {
+                    return false;
+                }
+            }
+
+            var box1 = document.getElementById("box1");
+            var speed = 5;
+            //创建一个变量来表示方向
+            //通过修改dir来影响移动的方向
+            var dir = 0;
+            //开启一个定时器来控制div的移动速度
+            var stat = setInterval(function(){
+                switch (dir) {  //键盘的左上右下 控制box1
+                    case 37:
+                        box1.style.left = box1.offsetLeft - speed + "px";
+                        break;
+                    case 38:
+                        box1.style.top = box1.offsetTop - speed + "px";
+                        break;
+                    case 39:
+                        box1.style.left = box1.offsetLeft + speed + "px";
+                        break;
+                    case 40:
+                        box1.style.top = box1.offsetTop + speed + "px";
+                        break;
+                }
+            },30) 
+            document.onkeydown = function (event) {
+                event = event || window.event;
+                //让dir等于按键的值
+                dir = event.keyCode;
+            }
+            document.onkeyup = function(){
+                //设置方向为0
+                dir = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id="inp" type="text">
+    <div id="box1"></div>
+</body>
+
+</html>

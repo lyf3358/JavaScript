@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+
+        window.onload = function () {
+            /*
+                点击超链接以后删除该条信息
+            */
+            function delA(){
+                var tr = this.parentNode.parentNode;
+                var name = tr.children[0].innerHTML;
+                var cfm = confirm("确认删除"+name+"吗?")
+                if (cfm) tr.parentNode.removeChild(tr);
+            } 
+            var allA = document.getElementsByTagName("a");
+            for (var i = 0; i < allA.length; i++) {
+                allA[i].onclick = delA;
+            }
+            /*
+                点击提交录入用户信息
+            */
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                //获取表单值
+                var name = document.getElementById("empName").value,
+                    email = document.getElementById("email").value,
+                    salary = document.getElementById("salary").value;
+                //创建tr元素
+                var trTag = document.createElement("tr");
+                    trTag.innerHTML = "<td>"+name+"</td>"+"<td>"+email+"</td>"+"<td>"+salary+"</td>"+"<td><a href='javascript:;'>delete</a></td>";
+                //获取a标签
+                var aTg = trTag.getElementsByTagName("a")[0];
+                //绑定单击删除函数
+                    aTg.onclick = delA;
+                //获取id为userTable的table元素
+                var userTable = document.getElementById("userTable");
+                var tbody = userTable.getElementsByTagName("tbody")[0];
+                //判断是否确认要添加员工信息
+                var cff = confirm("确认添加员工信息吗？");
+                if (cff && (name&&email&&salary) != "" && (name&&email&&salary) != null) {
+                    //将创建好的tr添加到tbody中  
+                    tbody.appendChild(trTag);
+                }                
+            }          
+        }
+    </script>
+    <style>
+        table {
+            margin: 50px auto;
+            width: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="userTable" border="1" id="empTable" cellspacing="0" cellpadding="10">
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>tom</td>
+            <td>tom@gmail.com</td>
+            <td>50000</td>
+            <td><a href="javascript:;">delete</a></td>
+        </tr>
+        <tr>
+            <td>jim</td>
+            <td>jim@gmail.com</td>
+            <td>8000</td>
+            <td><a href="javascript:;">delete</a></td>
+        </tr>
+    </table>
+    <table border="1" id="subTable" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>name:</td>
+            <td><input type="text" id="empName" name="empName"></td>
+        </tr>
+        <tr>
+            <td>email:</td>
+            <td><input type="text" id="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>salary:</td>
+            <td><input type="text" id="salary" name="salary"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button id="btn">submit</button></td>
+        </tr>
+    </table>
+</body>
+</html>

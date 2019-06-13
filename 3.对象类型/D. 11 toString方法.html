@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 当我们直接在页面中打印一个对象时，实际上时输出的对象的toString()方法的返回值
+			 * 	如果希望输出对象时不输出[object objec],可以为对象添加一个toString()方法
+			 */
+			function Person(name,age){
+				this.name = name ;
+				this.age = age ;
+			}
+			
+			Person.prototype.toString = function(){
+				return this.name +this.age;//将输出内容保存在构造函数的原型中，然后调用
+			}
+			var per = new Person("孙悟空",18);
+			var per1 = new Person("猪八戒",18);
+			var per2 = new Person("你大爷",20);
+			
+			
+			var result = per.toString();
+			console.log(per2);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

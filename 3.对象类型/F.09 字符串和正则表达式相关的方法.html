@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			navigator.userAgent
+			/*
+			 * 【支持正则表达式的 String 对象的方法】
+			 * split()拼接值
+			 * 	- 把字符串分割为字符串数组。
+			 * 	- 方法中可以传递一个正则表达式作为参数，这样方法将会根据正则表达式查分字符串
+			 * 
+			 * serch()索引位置，不可以全局匹配g
+			 *  - 可以搜索字符串中是否含有指定内容
+			 * 	- 如果搜索到指定的内容，则返回第一次出现的索引，如果没有搜索到则返回-1
+			 * 	- 它可以接受一个正则表达式作为参数，然后会根据正则表达式去检索字符串
+			 * 
+			 * match()取出值
+			 * 	- 可以根据正则表达式，从一个字符串中将符合条件的内容提取出来,并封装到数组中返回
+			 * 	- 默认情况下match只会找到第一个符合要求的内容，找到以后就停止检索
+			 * 		为此我们可以设置正则表达式为全局匹配模式，这样就会匹配到所有内容
+			 * 		可以为一个正则表达式设置多个匹配模式，且顺序无所 如/[ab]/igm;
+			 * replace()替换值
+			 * 	- 替换与正则表达式匹配的子串
+			 * 	- 参数：
+			 * 		1.被替换的内容，可以接受一个正则表达式作为参数
+			 * 		2.新的内容
+			 */			
+			var str = "dbc adc afc ";
+			var str1 = "1a2b3c";
+			var spl = str.split(/[a-z]|/);//split()方法中可以传递一个正则表达式作为参数
+			var sch = str.search(/a[bdf]c/);//serch()方法可以检索与正则表达式相匹配的值。
+			var mat = str1.match(/[A-z]/g)//match()找到一个或多个正则表达式的匹配值，取出来。返回一个数组
+			var rep = str1.replace(/[a-z]/g,"@");//replace()替换与正则表达式匹配的子串
+			console.log(sch);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

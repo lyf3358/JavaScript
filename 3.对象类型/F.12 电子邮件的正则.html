@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 【电子邮件的正则】
+			 * admin.fly@gmail.com.cn
+			 * 开头  - 任意字母数字下划线任意字母数字下划线,重复一次至多次 (^\w\.)+ 
+			 * 中间
+			 * 		- \@
+			 * 		- 任意字母数字下划线任意字母数字下划线,重复一次至多次 (^\w\.)+ 
+			 * 结尾  - 结尾必须是点号[.]连接2至4位的大小写字母[A-Za-z]{2,4}
+			 * 
+			 * 
+			 */
+			var reg = /^[\w\-\.]{3,}\@[\w\-]+(\.[A-z]{2,6}){1,2}$/;
+			var str = "s.a-_a@g-ma_il.com";
+			console.log(reg.test(str));
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+    </style>
+    <script>
+        /*
+            BOM
+                - 浏览器对象模型
+                - BOM可以使我们通过JS来操作浏览器
+                - 再BOM中为我们提供了一组对象，用来完成对浏览器的操作
+                - BOM对象
+                    Window
+                        - 代表的是整个浏览器的窗口，同时window也是网页中的全局对象
+                    Navigator
+                        - 代表的当前浏览器的信息，通过该对象可以来识别不同的浏览器
+                    Location
+                        - 代表当前浏览器的地址信息,通过Location可以获取地址栏信息，或者操作浏览器跳转页面
+                    History
+                        - 代表浏览器的历史记录，可以用过该对象来操作浏览器的历史纪录
+                            由于隐私原因，该对象不能获取到具体的历史记录，只能操作浏览器向前或向后翻页
+                    Screen 
+                        - 代表用户的屏幕的信息，通过该对象可以获取到用户的显示器的相关的信息
+        */
+        /*
+            Navigator
+                - 代表的当前浏览器的信息，通过该对象来识别不同的浏览器
+                - 由于历史原因，Navigator对象中的大部分属性都已经不能帮助我们识别浏览器了
+                - 一般我们指挥使用userAgent来判断浏览器的信息    
+            谷歌于火狐都可以直接可以在userAgent返回的信息中确认是什么浏览器，但是IE就无法判断，所以会通过IE特有的属性来判断是否是IE浏览器
+        */
+        console.log(navigator.userAgent)
+        if (navigator.userAgent.match(/iphone/i)) {//匹配字符串中是否有对应的手机设备，
+            alert("haha")
+        }
+
+        /*
+            History
+                - 可以用来操作浏览器向前或向后翻页
+                - length属性，可以获取到当前访问的链接数量    
+                - back()方法，可以用力啊回退到上一个页面,可以绑定一个事件
+                - forward()方法，可以向下一个页面跳转
+                - go()方法，可以用来跳转到指定的页面
+                    - 他需要一个整数作为参数，正数是向前跳转，负数向后跳转
+                        1.表示向前跳转一个页面
+                        2.表示向前跳转2个页面
+                        -1.向后跳转一个页面
+                        -2.向后跳转2个页面
+        */
+        window.onload = function(){
+            var btn02 = document.getElementById("btn02");
+            btn02.onclick = function(){
+                // history.forward();
+                history.go(1)
+            }
+
+            
+        }
+
+        /*
+            location
+                - 该对象中封装了地址栏的信息
+                - assion()方法,用来跳转到其他页面，作用和直接修改location一样
+                - reload()方法，用来重新加载当前页面，作用和刷新按钮一样，如果再方法中传一个true作为参数，则会强制清空缓存刷新页面
+                - repalce()方法，可以使用新的地址替换当前的地址，但是不会生成历史记录，无法后退
+        */
+        window.onload = function(){
+            var btn03 = document.getElementById("btn03");
+            //location修改访问地址
+            btn03.onclick = function(){
+                location = "https://www.baidu.com"
+            }
+            // assign()和修改location地址一样的作用
+            function url(){
+                location.assign("https://baidu.com");
+            }
+            setTimeout(url,2000)
+            //reload(),重新加载页面 和刷新一样
+            // location.reload(true);
+            //replace(),使用新的地址替换当前的地址，但是不会生成历史记录，无法后退
+            // location.replace("https://www.baidu.com")
+        }
+
+    </script>
+</head>
+<body>
+    <a href="测试页面.html">去测试页面.html</a>    
+    <button id="btn02">向前</button>
+    <button id="btn03">修改loction</button>
+</body>
+</html>

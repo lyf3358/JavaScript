@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 【元字符】-转义字符
+			 * \w - 查找【单词字符】 a-z、A-Z、0-9，以及下划线。
+			 * \W - 查找任意非【单词字符】a-z、A-Z、0-9，以及下划线。
+			 * \d - 任意的数字
+			 * \D - 任意的非数字字符
+			 * \s - 查找空白字符
+			 * \S - 查找非空白字符
+			 * \b - 匹配单词边界
+			 * \B - 匹配非单词边界
+			 */
+			var reg = /\w/;//查找任意【字母，数字】字符,有就返回true
+			reg= /\W/;//查找任意非【字母，数字】字符,有就返回true
+			reg = /\d/;//查找任意的数字,有就返回true
+			reg = /\D/;//查找任意的非数字字符,有就返回true
+			reg = /\s/;//查找空白字符,有就返回true
+			reg = /\S/;//查找非空白字符,有就返回true
+			reg = /\bhello/;//匹配单词边界,查找位于单词的开头或结尾的匹配。
+			reg = /\B/;//匹配非单词边界,不是以规则开头或结尾的单词
+			
+			/*小练习*/
+			//var str2 = prompt("请输入用户名");//输入的用户名带有空格，我们需要检测并去除
+			//var str2 = "  he  llo   ";
+			reg = /^\s*|\s*$/g; //去除掉字符串中前后的空格
+			reg = /\s/g;//去除掉字符串中所有的空格
+			
+			str2 = str2.replace(reg,"");
+			
+			console.log(str2);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

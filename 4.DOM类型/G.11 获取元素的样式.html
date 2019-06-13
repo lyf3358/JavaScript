@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen; 
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                /*
+                    获取元素的当前显示的样式
+                    语法：元素.currentStyle.样式名  但是只有IE浏览器支持
+                    只能读取，不能修改！！！！！！
+                */
+                //alert(box1.currentStyle.height); 是个数组
+
+                /*
+                    在其他浏览器可以使用：
+                    getComputedStyle() 这个方法来获取元素当前的样式
+                        这个方法时window的方法，可以直接使用 
+                    IE8及以下不支持此方法    
+                    需要两个参数：
+                        第一个：要获取的元素
+                        第二个：可以传递一个微元素，一般都传null
+                    该方法会返回一个对象，对象中封装了所有当前元素对应的样式，是个数组
+                    可以通过对象.样式名来读取样式
+                    如果获取的样式没有设置，则会获取到真实的值，而不是默认值
+                    比如：没有设置width，他不会获取到auto，而是一个长度  
+                    只能读取，不能修改！！！！！！
+                    
+                */
+                    alert(getStyle(box1,"width"))
+
+            }
+            /*
+                定义个函数，用来获取元素的当前样式
+                    参数：
+                        obj：要获取样式的元素
+                        name；要获取样式名
+            */
+            function getStyle(obj,name){
+                // if(window.getComputedStyle){
+                //     //如果是判断getComouted他会去每一层作用域找，但是他是没有的变量所以会报错，
+                //     //使用window.会作用window的属性，就不报错
+                //     return getComputedStyle(obj,null)[name];
+                // }else{
+                //     return obj.currentSryle[name];
+                // }
+                return window.getComputedStyle?getComputedStyle(obj,null)[name]:obj.correntStyle[name];
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box1"></div></br>
+    <button id="btn01">点一下</button>
+</body>
+</html>

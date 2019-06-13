@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 字符串在底层时以字符数组的形式构成
+			 */
+			var str = "abcde";
+			//var num = ["haha","99","oop"]
+			var st = str.charAt(7); //charAt 返回指定位置的字符
+			var uc = str.charCodeAt(0);//charCodeAt 返回指定位置字符的unicode编码
+			var fc = String.fromCharCode(49);//fromCharCode将unicode编码转为字符，需要使用string函数调用
+			var cot = str.concat("你好","草泥马");//concat将多个字符串连接到一起
+			var inx = str.indexOf("e",2);//indexOF 返回某个指定的字符串值在字符串中首次出现的位置,第二个参数为查找起始位置，找不到返回-1
+			var lnx = str.lastIndexOf("@");//lastIndexOf 从后往前找
+			var sl = str.slice(0,-2);//slice 截取指定索引范围的字符内容，包括开始不包括结束。只写一个参数，会截取开索引开始后的全部内容
+			var sub = str.substring(6,-5);//sunSting 与slice类似，第二个参数如果时负数，则会转换参数位置
+			var sus = str.substr(0,3);//substr从起始索引号提取字符串中指定数目的字符。
+			var spl = str.split(",")//把字符串分割为字符串数组。
+			var up = str.toUpperCase();//将字符串转换为大写
+			var low = up.toLowerCase();//将字符串转换为小写
+			
+			console.log(low);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

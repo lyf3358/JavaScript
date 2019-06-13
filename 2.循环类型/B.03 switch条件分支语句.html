@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 条件分支语句也叫switch语句
+			 * 	语法：
+			 * 		switch(条件表达式){
+			 * 			case 表达式: 
+			 * 					语句..
+			 * 				break;
+			 * 			case 表达式:
+			 * 					语句..
+			 * 			case 表达式:
+			 * 					语句..		
+			 * 		}
+			 * 执行的流程：
+			 * 		switch...case...语句
+			 * 		在执行时会依次将case后的表示的值和switch后的条件表达式的值进行全等比较
+			 * 		如果比较结果为true，则从当前case处开始执行代码
+			 * 			当前case后的代码都会被执行，忽略后边的所以case条件
+			 * 		如果比较结果false，则继续向下进行比较
+			 * 		如果所有的比较结果都为false，则执行defaul后的代码
+			 */
+
+			//根据num的值，输出对应的中文
+			var num =[1,2,3];
+			switch(num){
+				case 1,2,3: console.log("haha");
+				break;
+				//如果所有的比较结果都为false，则执行defaul后的代码
+				default :console.log("hahah");
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
