@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 通过关系运算符可以比较两个值之间的大小关系
+			 * 	如果关系成立它会返回true，如果不成立则返回false
+			 * 
+			 * 【 > 大于号】：
+			 * 	- 判断符号左侧的值石佛大于右侧的
+			 * 	- 如果关系成立，则返回true，否则返回false
+			 * 【> 大于号】：
+			 * 	- 判断符号左侧的值是否大于或等于右侧的值
+			 * 	- 如果关系成立，则返回true，否则返回false
+			 * >= 大于等于
+			 * < 小于
+			 * <= 小于等于
+			 * 【非数值的情况】
+			 * 	- 对于非数值进行比较时，会将其转换为数字，在进行比较。
+			 * 	- 任何值和NaN比较都是false	
+			 * 	- 如果符号【两侧的值都是字符窜】时，不会将其转换为数字进行比较
+			 * 		而会分别比较字符串中字符的Unicode编码
+			 */
+			
+			var result= 5>10;//false
+			result = 5>3;//false
+			result = 5>=4;//true
+			result = 5<4;//false
+			result = 3<=4;//true
+			//console.log("result="+result);
+			//console.log(2>true);// 2>1 =true
+			//console.log(1>=false);// 1>=0 =true
+			
+			//console.log(1>"2");// 1>2 false
+			
+			//console.log(2>"hello");//任何值和NaN比较都是false	
+			//console.log(true > false);// 1 > 0  true
+			
+			//console.log("1"<"5");// 1<5 true  纯数字字符窜直接转换为对应的数字
+			console.log("11"<"5");// true  1的编码比5的小
+			console.log("a"<"b");// true a的编码比b的小
+			
+			//如果比较的是两个字符串类型的数字，可能会得到不可预期的结果
+			//注意：在比较两个字符串型的数字时，一定一定要转型
+			console.log("11111222"< +"5");// true
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+ 

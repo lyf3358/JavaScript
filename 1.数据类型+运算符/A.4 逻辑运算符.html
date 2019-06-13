@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * JS中为我们提供了三种逻辑运算符
+			 * 
+			 * 【 ！ 非运算】
+			 * 		- ！ 可以用来对一个值进行非运算
+			 * 		- 所谓非运算就是对一个布尔值进行取反操作，
+			 * 			true变false，false变true
+			 * 		- 如果对一个值进行两次取反，它不会有变化
+			 * 		- 如果对非布尔值进行运算，则会将其转换为布尔值，然后进行取反.
+			 * 			所以我们可以利用该特点，来将一个其他的数据类型转换为布尔值
+			 * 			可以为一个任意数据类型取两次反，来将其转换为布尔值，
+			 * 			原理和Boolen()函数一样。
+			 * 			 
+			 * 【&& 与 运算  找false】
+			 * 		- &&可以对符号两侧的值进行【与】运算并返回结果
+			 * 		- 运算规则:
+			 * 			- 两个值中只要有一个值为false就返回false
+			 * 				两个值都为ture返回第二个值；
+			 * 			- JS中的【与】属于短路的【与】，如果第一个值为false，就会忽略第二个值
+			 * 
+			 * 【|| 或运算  找true】
+			 * 		-  ||运算可以多符号两侧的值进行或运算，并返回结果
+			 * 		- 运算规则：
+			 * 			- 两个值只要有一个值是true，就返回true
+			 * 				两个值都为false的时候才回第二个值
+			 * 			- js中的【或】属于短路的【或】，如果第一个值为true，就会忽略第二个值
+			 *
+			 * 
+			 */
+			
+			//【!非运算】，原理和Boolen()函数一样。
+			//var a =false;			
+			//a= !a;
+			//console.log("a="+a); true
+			//var b = 10;
+			//b= !!b;
+			//console.log("b="+b); true
+			//console.log(typeof b);Boolen
+			
+			//【&&与运算】
+			//var result= true && true;
+			//result = true&&false;//fasle
+			//result = 1 && 2; //true 并返回2 都为true返回第二个值
+			//result = false&&true;//fasle
+			//result = true&& true;//两个值都为true才返回true		
+			//true&&alert("come on");//第一个值为false就不为再检查第二个值
+			//console.log("result="+result);
+			
+			//【||或运算】
+			result = false||false;//false
+			result = true || false;//true
+			result = false || true;//只要有一个值是true就返回true
+			//true||alert("123");//第一个值为true就不为再检查第二个值
+			console.log("result="+result);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

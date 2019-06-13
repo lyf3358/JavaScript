@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/*
+			 * 条件运算符也叫三元运算符
+			 * 语法：条件表达式?语句1：语句2；
+			 * 	- 执行的流程;
+			 * 		条件运算符在执行时，首先对条件表达式进行求值，
+			 * 			如果该值为true，则执行语句1，并返回执行结果，
+			 * 			如果该值为false，则执行语句2，并返回执行结果
+			 * 		如果条件表达式的求值结果是一个非布尔值，
+			 * 			则会先转换为布尔值再进行运算
+			 * 	
+			 */
+			//false?alert("yu"):alert("ju");
+			var a = 10;
+			var b = 20;
+			var c= 30;
+			//a >b ? alert("1"):alert("2");
+			var max = a>b ? a:b;// 结果赋值给max			
+			max1 = max > c ? max:c;
+			//console.log("max1="+max1);
+			
+			//这种写法不推荐使用，不方便阅读
+				//30					30                 30
+			var max1 = a > b ? (a> c ? a : c ): (b > c ? b : c);
+			console.log("max1="+max1);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
