@@ -59,20 +59,25 @@
             var imglist = document.getElementById("imglist");
             var nav = document.getElementById("nav");
             var outer = document.getElementById("outer");
+            var imgArr = document.getElementsByTagName("img");
             //设置 nav居中
             nav.style.left = (outer.offsetWidth - nav.offsetWidth)/2+"px";
             //设置默认显示图片的索引
             var index = 0;
             //获取所有超链接a
             var allA = document.getElementById("nav").getElementsByTagName("a");
+            //让index 0默认就是黑色
+            allA[index].style.backgroundColor = "black";
             //设置默认选中的效果
-            allA[index].style.backgroundColor = "black"
+            var timer;
             //点击超链接切换到指定图片
             for (var i = 0; i < allA.length; i++) {
                 //为每一个超链接都添加一个num属性
                 allA[i].num = i;
                 //为超链接绑定点击事件
                 allA[i].onclick = function(){
+                    //关闭自动切换定时器
+                    clearInterval(timer);
                     //获取点击的超链接的索引,并将其设置为index
                     index = this.num;
                     //切换图片
@@ -80,21 +85,43 @@
                     //选中a
                     setA();
                     //使用move函数来切换图片
-                    move(imglist,"left",-310*index,10000,function(){})
-
+                    move(imglist,"left",-310*index,200,function(){
+                        autoChange();
+                    })
                 } 
-
             }
+            
+            
             //创建一个方法用来设置选中的a
             function setA(){
+                //判断当前所以是否是最后一张图片
+                if (index >= imgArr.length - 1) {
+                    //则将点的index 设置为 0 ，就是最后一张图片显示第一个点
+                    index = 0;
+                    //此时显示的是最后一张图片，而最后一张图片和第一张是一模一样的,所以当点的索引为0时，将ul的left值设置为0
+                    imglist.style.left = 0;
+                }
                 //便利所有的A，并将他们的背景颜色设置为红色，将选中的A设置为黑色
                 for (var i = 0; i < allA.length; i++) {
-                    allA[i].style.backgroundColor = "";
-                    allA[index].style.backgroundColor = "black";
-                    
+                    allA[i].style.backgroundColor = ""; 
                 }
+                allA[index].style.backgroundColor = "black";
             }
-
+            function autoChange(){
+                //开启一个定时器，用来定时切换图片
+                timer = setInterval(function(){
+                    //使索引自增
+                    index++;
+                    //判断index的值
+                    index %= imgArr.length;
+                    move(imglist,"left",-310*index,100,function(){//10是PX
+                        setA();
+                    })
+                    
+                },2000);
+            }
+            //自动切换图片
+            autoChange();
         }
     </script>
 </head>
@@ -118,6 +145,9 @@
             </li>
             <li>
                 <img src="img/6.png" alt="">
+            </li>
+            <li>
+                <img src="img/1.png" alt="">
             </li>
         </ul>
         <div id="nav">
