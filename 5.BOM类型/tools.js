@@ -1,4 +1,4 @@
-function move(obj2,attr,target,speed) {
+function move(obj2,attr,target,speed,callback) {
     //关闭上一个定时器,给每一个按钮绑定一个定时器属性
     clearInterval(obj2.start)
     //获取元素的目前位置
@@ -25,6 +25,7 @@ function move(obj2,attr,target,speed) {
         //判断newValue是否等于800，如果等于就结束定时器
         if(newValue == target){
             clearInterval(obj2.start);
+            callback && callback()
         }
     }, 50)
 }
