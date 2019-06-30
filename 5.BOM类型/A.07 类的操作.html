@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .b1{
+            width: 100px;
+            height: 100px;
+            background: #bbffaa;
+        }
+        .b2{
+            height:200px;
+            background: red;
+            
+        }
+    </style>
+</head>
+<body>
+    <button id="btn01">按钮</button>
+    <div id="box1" class="b1"></div>
+    <script>
+        var btn01 = document.getElementById("btn01");
+        var box1 = document.getElementById("box1");
+        btn01.onclick = function(){
+            //修改box1的样式，通过style属性修改的样式，每修改一个就会重新渲染一次，性能比较差
+            // box1.style.width = "50px";
+            //修改元素的class的名字来修改一组样式，浏览器只渲染一次，性能较好，表现和行为分离
+            // box1.className += " b2"
+
+            //执行改变类的函数
+            swicthClass(box1,"b2")
+        }
+        //定义一个函数，用来向元素中添加指定的class属性值
+        function addClass(obj,name){
+            //如果obj.className中没有name 才会添加name的属性值
+            if(!hasClass(obj,name)){
+                obj.className += " "+name;
+            }           
+        }
+        //创建一个函数，来判断一个元素中是否有指定的class属性值
+        function hasClass(obj,name){
+            //创建一个正则表达式，来设定检测内容
+            var reg = new RegExp("\\b"+name+"\\b");
+            return reg.test(obj.className);
+            
+        }
+        //删除一个元素中的class属性
+        function removeClass(obj,name){
+            //创建一个正则表达式
+            var reg = new RegExp("\\b"+" "+name+"\\b");
+            obj.className = obj.className.replace(reg,"")//如果有对应的class名字符窜就会替换为空串
+        }
+        //swicthClass可以用来切换一个类，如果元素中有该类，则删除，没有则添加
+        function swicthClass(obj,name){
+            //判断obj.className中是否有name
+            if(hasClass(obj,name)){
+                //如果有就删除
+                removeClass(obj,name);
+            }else{
+                //如果没有就添加
+                addClass(obj,name)
+            }
+        }
+    </script>
+</body>
+</html>

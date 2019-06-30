@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="classTools.js"></script>
+    <script src="tools.js"></script>
+    <style>
+        .menuList {
+            width: 150px;
+            background: #d8dad2;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            left: 100px;
+            top: 50px;
+            user-select: none;
+            /*禁止鼠标选取文字内容*/
+
+        }
+        .menuList div{
+            overflow: hidden;
+        }
+        .menuSpan {
+            width: 150px;
+            height: 25px;
+            background: #4f514b;
+            display: block;
+            line-height: 25px;
+
+            z-index: 99;
+        }
+
+        .menuSpan:nth-child(3) {
+            border-bottom: 0px;
+        }
+
+        a {
+            display: block;
+            font-size: 13px;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        a:hover {
+            background: #dce6be;
+        }
+
+        a:active {
+            color: black;
+        }
+
+        .close {
+            width: 150px;
+            height: 26px;
+            overflow: hidden;
+        }
+        .close:nth-child(3) {
+            height: 25px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="menu" class="menuList">
+        <div class="close">
+            <span class="menuSpan">陆老师</span>
+            <a href="javascript:;">语文</a>
+            <a href="javascript:;">数学</a>
+        </div>
+        <div class="close">
+            <span class="menuSpan">王老师</span>
+            <a href="javascript:;">英语</a>
+            <a href="javascript:;">物理</a>
+        </div>
+        <div class="close">
+            <span class="menuSpan">刘老师</span>
+            <a href="javascript:;">化学</a>
+            <a href="javascript:;">政治</a>
+        </div>
+
+    </div>
+    <script>
+        //每一个菜单都是一个div，当div具有shrink这个类时，div就是折叠的状态，否则就时展开的状态
+        //获取所有menuSpan
+        var menuSpan = document.querySelectorAll(".menuSpan");
+        //创建一个变量来保存当前打开的菜单
+        var openDiv = menuSpan[0].parentNode;
+        //遍历menuSpan
+        for (var i = 0; i < menuSpan.length; i++) {
+            //为span绑定单击响应函数
+            menuSpan[i].onclick = function () {
+                //this代表当前点击的span
+                var parentDiv = this.parentNode;
+                switchMenu(parentDiv)
+                //切换菜单的显示状态
+
+                //获取当前span的父元素,点谁this就是谁
+                //判断openDiv与parentDiv是否相同,再判断，openDiv里是否有close类名，如果都没有才会往下执行代码
+                if (openDiv != parentDiv && !hasClass(openDiv, "close")) {
+                    //打开当前菜单以后，关闭之前打开的菜单
+                    //为了可以统一处理动画的过渡效果，可以将addClass方法改为switch方法
+                    switchMenu(openDiv)
+                    //此时switchClass不需要有移除的功能
+                }
+                //修改openDiv为当前打开的菜单
+                openDiv = parentDiv;
+
+            }
+            //切换菜单折叠和显示状态 
+            function switchMenu(obj) {
+                //在切换类之前，获取元素的高度
+                var begin = obj.offsetHeight;
+                //切换parentDiv的类名
+                swicthClass(obj, "close");
+                //切换类之后获取一个高度
+                var end = obj.offsetHeight;
+                console.log(begin, end);
+                //过渡效果就是高度从begin向end过渡
+                obj.style.height = begin + "px";
+                move(obj, "height", end, 7, function () {
+                    obj.style.height = "";
+                });
+
+            }
+        }
+    </script>
+</body>
+
+</html>
