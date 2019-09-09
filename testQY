@@ -1,0 +1,34 @@
+    [loop]
+    <li>
+        <a href="{url}">
+            <div class="pic">
+                <img width="{picwidth}" height="{picheight}" src="{pic}" />
+            </div>
+            <h3>{title}</h3>
+            <div class="attr cl">
+                <div class="fl">
+                    <span class="au icon testUle">{authorid}</span>
+                    <script>
+                        var testUle=document.querySelectorAll(".testUle");
+                        for(i=0;i<testUle.length;i++){
+                            switch({authorid}){
+                            case 31713:
+                            testQy[i].innerHTML="{author}";
+                                break;
+                            case 84465:
+                            testQy[i].innerHTML="{author}";
+                                break;
+                            case 39859:
+                            testQy[i].innerHTML="{author}";
+                                break;
+                        }
+                    </script>
+                </div>
+                <div class="fr">
+                    <span class="views icon">{views}</span>
+                    <span class="replies icon">{replies}</span>
+                </div>
+            </div>
+        </a>
+    </li>
+    [/loop]
