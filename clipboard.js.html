@@ -11,8 +11,11 @@
 
 <body>
     <!-- 1. Define some markup -->
-    <div>hello</div>
-    <button class="btn" data-clipboard-action="copy" data-clipboard-target="div">Copy</button>
+<!--     <div>hello</div>
+    <button class="btn" data-clipboard-action="copy" data-clipboard-target="div">Copy</button> -->
+    
+    <input type="text" id="text1" value>
+    <button id="btnCopy" class="btn" data-clipboard-action="copy" data-clipboard-target="#text1">Copy</button>
 
     <!-- 2. Include library -->
     <script src="clipboard.min.js"></script>
