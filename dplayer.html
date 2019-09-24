@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="/jquery-3.4.1.min.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="source">
+    <input type="button" id="submit" value="提交">
+    <link rel="stylesheet" href="dplayer/DPlayer.min.css" />
+    <div id="player1"></div>
+    <script src="dplayer/hls.min.js"></script>
+    <script src="dplayer/DPlayer.min.js"></script>
+    <script>
+        //缺点跨域请求资源！待解决
+        $(function () {
+            $("#submit").click(function (e) {
+                e.preventDefault();
+                var source = $("#source").val();
+                var dp = new DPlayer({
+                    element: document.getElementById('player1'),
+                    video: {
+                        url: source
+                    }
+                });
+                dp.play();
+
+            });
+
+        })
+
+    </script>
+</body>
+
+</html>
