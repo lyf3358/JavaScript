@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function (){
+				//获取文档中的对应ID元素
+				var prevPic = document.getElementById("prev");
+				var nextPic = document.getElementById("next");
+				var num1 = document.getElementById("num1");
+				var num2 = document.getElementById("num2");
+				var num3 = document.getElementById("num3");
+				//获取img标签
+				var img = document.getElementsByTagName("img")[0];					
+				//设置点击函数
+				//创建一个数组保存图片路径
+				var arr = [
+				"img/1.png/",
+				"img/2.png/",
+				"img/3.png/"
+				]
+				//创建一个变量，来保存当前正在显示的图片的索引
+				var index = 0;
+				//上下按钮
+				prevPic.onclick = function(){
+					index -- ;
+					//判断index是否小于0
+					if (index<0) {
+						//当index<0时，index = arr的最大索引-1
+						index = arr.length-1;
+					}
+					img.src = arr[index];									
+				}
+				nextPic.onclick = function(){		
+					index ++;
+					if (index>arr.length-1) {
+						//当index大于arr的最大索引-1时
+						index=0;						
+					}
+					img.src = arr[index];
+				}
+				//数字按钮
+				num1.onclick = function(){
+					img.src = arr[0];										
+				}
+				num2.onclick = function(){		
+					img.src = arr[1];
+				}
+				num3.onclick = function(){		
+					img.src = arr[2];
+				}
+			}
+			
+		</script>
+			
+		</script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#outer{
+				width: 200px;
+				
+				margin: 50px auto;
+				padding: 10px;
+				background: yellowgreen;
+				text-align: center;
+			}
+			img{
+				margin-bottom: 10px;
+				transform:myfirst 5s; ;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="outer">
+			<button id="prev">上一张</button>
+			<img src="img/1.png"/ alt="地图">
+			<button id="next">下一张</button>
+			<div id="btn">							
+				<button id="num1">1</button>
+				<button id="num2">2</button>
+				<button id="num3">3</button>
+
+			</div>
+		</div>
+	</body>
+</html>
+

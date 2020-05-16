@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--可以将JS代码编写到外部文件中，然后通过script标签引入
+			写到外部文件中可以在不同的页面中同时引用，也可以利用到浏览器的缓存机制
+			推荐使用的方式
+			
+			script标签一旦用于引入外部文件了就不能在编写代码了,
+			即使编写了浏览器也会忽略
+		-->	
+		<script type="text/javascript" src="js/JS练习.js"></script>			
+		
+		<!--可以将JS写在script标签中
+			<script type="text/javascript">
+			alert("我是script标签中的代码")
+			</script>-->
+	</head>
+	<body>
+		<!--可以将JS代码编写到标签的onclick属性中
+			当我们点击按钮时，JS代码才会执行
+		-->		
+		<button  onclick="alert('helloWorld');">点我以下</button>
+		<!-- 可以将代码写在超链接的href属性中，这样当点击超链接时，会执行JS代码-->
+		<a href="javascript:alert('让你点');">你也点我以下</a>
+	</body>
+</html>
